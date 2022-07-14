@@ -12,8 +12,7 @@
    font: inherit;
 }
 // 3. Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed
-ul[role='list'],
-ol[role='list'] {
+ul, ol {
   list-style: none;
 }
 // 4. Set core root defaults
@@ -22,10 +21,11 @@ html:focus-within {
 }
 // 5. Set core body defaults
 html,
-body {
+body, #root, .App {
    height: 100%;
 }
 body {
+  font-family: 'Poppins', sans-serif;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -56,3 +56,36 @@ svg {
 }
 // The reset stops here
 
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Utilities
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap');
+
+$primary: hsl(221, 55%, 15%);
+$primary-shadow: hsl(220, 60%, 2%);
+$secondary: hsl(55, 100%, 51%);
+$secondary-shadow: hsl(55, 96%, 41%);
+
+
+$accent-red: hsl(0, 100%, 55%);
+$accent-red-shadow: hsl(0, 100%, 35%);
+
+$neutral-w: hsl(60, 30%, 96%);
+$neutral-b: hsl(0, 0%, 6%);
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// These are the reusable properties
+@mixin flex($direction, $justify, $align: center) {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: $direction;
+   justify-content: $justify;
+   align-items: $align;
+}
+
+@mixin font($weight: 400) {
+  font-weight: $weight
+}
+
+@import './partials/_Navbar.scss';
