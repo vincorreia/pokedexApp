@@ -2,10 +2,10 @@ import axios from "axios"
 
 const url = "https://pokeapi.co/api/v2/pokemon/"
 
-export function useApi(){
+export function useSearchSinglePokemon(){
 
   const runApi = (pokemonId) => {
-    
+
     return new Promise((resolve, reject) => {
       axios.get(url + pokemonId)
 

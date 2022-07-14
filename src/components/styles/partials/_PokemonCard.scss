@@ -1,0 +1,42 @@
+// Pokemon Card style
+
+.pokemon-card {
+   @include flex(row, space-between);
+   width: 100%;
+   padding: 0.5rem;
+   background: linear-gradient(180deg, $neutral-black 65%, $neutral-white 35%);
+   border-radius: 1rem;
+   box-shadow: 0px 0.25rem $neutral-white-shadow;
+   color: $neutral-black;
+
+   &:hover {
+      box-shadow: 0px 2px 0px 3px hsl(206, 96%, 72%);
+   }
+   
+   div {
+      width: 100%;
+   }
+
+   .pokemon-text {
+      @include flex(column, space-between, flex-start)
+
+      .types {
+        @include flex(row, flex-start);
+        gap: 0.2rem
+      }
+   }
+   
+   .pokemon-image {
+      @include flex(row, center);
+      img {
+         height: 12rem;
+      }
+
+      &:hover{
+         cursor: pointer;
+       }
+   }
+   h2 {
+      text-transform: capitalize;
+   }
+}

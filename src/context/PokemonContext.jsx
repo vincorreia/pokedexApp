@@ -1,5 +1,5 @@
 import React, {useState, useContext, useRef} from 'react';
-import { useApi } from '../hooks/useApi';
+import { useSearchSinglePokemon } from '../hooks/useSearchSinglePokemon';
 
 const PokemonContext = React.createContext()
 const PokemonUpdateContext = React.createContext()
@@ -15,7 +15,7 @@ export function useUpdatePokemons(){ // Hook to update pokemons context
 function PokemonProvider({children}) {
     const [pokemons, setPokemons] = useState([])
     const newPokemonsId = useRef()
-    const request = useApi()
+    const request = useSearchSinglePokemon()
 
     function findOrCreatePokemon(id) {
         return new Promise((resolve, reject) => {

@@ -14,32 +14,34 @@ function changeTitle(data) {
 }
 function PokemonDetails() {
     const [pokemon, setPokemon] = useState(null)
-    const [pokemonId, setPokemonId] = useState(useParams().pokemonId)
+    const [id, setId] = useState(useParams().pokemonId)
     const updatePokemons = useUpdatePokemons()
     const navigate = useNavigate()
 
     useEffect(() => {
-        updatePokemons(pokemonId).then(data => {
+        updatePokemons(id)
+        
+        .then(data => {
           changeTitle(data)
           setPokemon(data)
         },
-        e => {
-          throw e
+        error => {
+          throw error
         })
-    }, [pokemonId])
+    }, [id])
 
     return ( 
       <div>
         <button onClick={() => {
-            navigate("/" + (Number(pokemonId) - 1))
-            setPokemonId(Number(pokemonId) - 1)
+            navigate("/" + (Number(id) - 1))
+            setId(Number(id) - 1)
         }}>Previous</button>
 
         {pokemon && capitalize(pokemon.name)}
 
         <button onClick={() => {
-            navigate("/" + (Number(pokemonId) + 1))
-            setPokemonId(Number(pokemonId) + 1)
+            navigate("/" + (Number(id) + 1))
+            setId(Number(id) + 1)
         }}>Next</button>
       </div>
      );
